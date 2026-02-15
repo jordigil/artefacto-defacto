@@ -1,0 +1,76 @@
+name: Builditto
+run-name: ${{ github.event.inputs.job_to_run && format('Build {0}', github.event.inputs.job_to_run) || github.event.pull_request.title ||'Auto Release' }}
+
+concurrency:
+  group: build-eden-${{ github.ref }}-${{ github.event.inputs.job_to_run || github.event_name }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      job_to_run:
+        type: choice
+        description: 'Choose windows'
+        options: [windows]
+        default: 'windows'
+
+jobs:
+  windows:
+    runs-on: ${{ matrix.runs-on }}
+    name: "Windowsitto"
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+           - toolchain: MSVC
+             optimize: normal
+             arch: x86_64
+             runs-on: windows-latest
+    defaults:
+      run:
+        shell: ${{ matrix.toolchain == 'MSYS2' && 'msys2 {0}' || 'bash {0}' }}
+    env:
+      TOOLCHAIN: ${{ matrix.toolchain }}
+      ARCH: ${{ matrix.arch }}
+      OPTIMIZE: ${{ matrix.optimize }}
+      SCCACHE_GHA_ENABLED: "true"
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - name: MSVCitto
+        if: ${{ matrix.toolchain != 'MSYS2' }}
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: ${{ matrix.arch }}
+
+      - name: Vulkanitto
+        if: ${{ matrix.toolchain != 'MSYS2' }}
+        shell: powershell
+        run: |
+          ./vulkanitto.ps1
+
+      - name: Sccacheditto
+        if: ${{ matrix.optimize == 'normal' }}
+        uses: Eden-CI/sccache-action@v0.0.2
+        with:
+          disable_annotations: true
+
+      - name: Clonitto
+        run: |
+          git clone 'https://git.eden-emu.dev/eden-emu/eden.git' ./eden
+          cd ./eden
+          echo "VERSION=$(git rev-list --count HEAD)" >> "${GITHUB_ENV}"
+
+      - name: Compileditto
+        run: |
+          chmod +x ./builditto.sh
+          ./builditto.sh
+
+      - name: Uploaditto
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          name: artefacto-defacto
+          path: eden/build/bin/
