@@ -1,8 +1,8 @@
 diff --git a/CMakeModules/GenerateSCMRev.cmake b/CMakeModules/GenerateSCMRev.cmake
-index f91a207dfd..d9662bfbae 100644
+index 5b0adad8dd..3f444ac660 100644
 --- a/CMakeModules/GenerateSCMRev.cmake
 +++ b/CMakeModules/GenerateSCMRev.cmake
-@@ -8,19 +8,38 @@
+@@ -8,19 +8,37 @@
  include(GetSCMRev)
  
  function(get_timestamp _var)
@@ -32,7 +32,6 @@ index f91a207dfd..d9662bfbae 100644
 +
 +git_count(GIT_COUNT)
 +
-+
  if (DEFINED GIT_RELEASE)
      set(BUILD_VERSION "${GIT_TAG}")
      set(GIT_REFSPEC "${GIT_RELEASE}")
@@ -44,15 +43,15 @@ index f91a207dfd..d9662bfbae 100644
      set(IS_DEV_BUILD true)
  endif()
  
-@@ -40,7 +59,7 @@ set(BUILD_AUTO_UPDATE_WEBSITE "https://github.com")
- set(BUILD_AUTO_UPDATE_API "http://api.github.com")
- 
- if (NIGHTLY_BUILD)
+@@ -40,7 +58,7 @@ if (NIGHTLY_BUILD)
+     set(BUILD_AUTO_UPDATE_WEBSITE "https://github.com")
+     set(BUILD_AUTO_UPDATE_API "api.github.com")
+     set(BUILD_AUTO_UPDATE_API_PATH "/repos/")
 -    set(BUILD_AUTO_UPDATE_REPO "Eden-CI/Nightly")
-+    set(BUILD_AUTO_UPDATE_REPO "DMCA/no-entiendo-fiuyiu")
++    set(BUILD_AUTO_UPDATE_REPO "DMCA/no-entiendo")
      set(REPO_NAME "Eden Nightly")
  else()
-     set(BUILD_AUTO_UPDATE_REPO "eden-emulator/Releases")
+     set(BUILD_AUTO_UPDATE_WEBSITE "https://git.eden-emu.dev")
 diff --git a/src/yuzu/about_dialog.cpp b/src/yuzu/about_dialog.cpp
 index 9f7597f471..b73cd41c1e 100644
 --- a/src/yuzu/about_dialog.cpp
