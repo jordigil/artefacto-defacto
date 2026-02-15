@@ -58,13 +58,13 @@ jobs:
         with:
           disable_annotations: true
 
-      - name: Clonitto
+      - name: Clonaditto
         run: |
           git clone 'https://git.eden-emu.dev/eden-emu/eden.git' ./eden
           cd ./eden
           echo "VERSION=$(git rev-list --count HEAD)" >> "${GITHUB_ENV}"
 
-      - name: Compileditto
+      - name: Compiladitto
         run: |
           chmod +x ./builditto.sh
           ./builditto.sh
