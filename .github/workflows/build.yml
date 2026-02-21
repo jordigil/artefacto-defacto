@@ -63,9 +63,6 @@ jobs:
           git clone 'https://git.eden-emu.dev/eden-emu/eden.git' ./eden
           cd ./eden
           echo "VERSION=$(git rev-list --count HEAD)" >> "${GITHUB_ENV}"
-          pip install transifex-client
-          cd ./dist/languages
-          tx pull -t -a
 
       - name: Compiladitto
         run: |
