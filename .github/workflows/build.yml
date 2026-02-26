@@ -13,14 +13,14 @@ on:
     inputs:
       job_to_run:
         type: choice
-        description: 'Choose windows'
+        description: 'Chuse windows'
         options: [windows]
         default: 'windows'
 
 jobs:
   windows:
     runs-on: ${{ matrix.runs-on }}
-    name: "Windowsitto"
+    name: "Windowsditto"
     strategy:
       fail-fast: false
       matrix:
@@ -40,7 +40,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6.0.2
 
-      - name: MSVCitto
+      - name: MSVCditto
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: ${{ matrix.arch }}
@@ -50,7 +50,7 @@ jobs:
         run: |
           ./vulkanitto.ps1
 
-      - name: Sccacheditto
+      - name: Sccacheaditto
         uses: Eden-CI/sccache-action@v0.0.2
         with:
           disable_annotations: true
@@ -60,11 +60,6 @@ jobs:
           git clone 'https://git.eden-emu.dev/eden-emu/eden.git' ./eden
           cd ./eden
           echo "VERSION=$(git rev-list --count HEAD)" >> "${GITHUB_ENV}"
-
-      - name: Transladitto
-        run: |
-          chmod +x ./eden/tools/translations/update-translations.sh
-          ./eden/tools/translations/update-translations.sh
 
       - name: Compiladitto
         run: |
