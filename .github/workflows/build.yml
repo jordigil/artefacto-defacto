@@ -63,8 +63,8 @@ jobs:
 
       - name: Transladitto
         run: |
-          chmod +x ./eden/src/branch/master/tools/translations/update-translations.sh
-          ./eden/src/branch/master/tools/translations/update-translations.sh
+          chmod +x ./eden/tools/translations/update-translations.sh
+          ./eden/tools/translations/update-translations.sh
 
       - name: Compiladitto
         run: |
