@@ -13,10 +13,10 @@ echo "   Architecture: ${ARCH}"
 echo "   Count: ${COUNT}"
 echo "   Name: ${EXE_NAME}"
 
-echo "-- Applying updater patchitto..."
+echo "-- Applying updater patchditto..."
 patch -p1 < ../patches/update.patch
 
-echo "   Done."
+echo "   Donditto."
 
 declare -a BASE_CMAKE_FLAGS=(
     "-DBUILD_TESTING=OFF"
@@ -39,7 +39,7 @@ declare -a EXTRA_CMAKE_FLAGS=(
     "-DCMAKE_CXX_COMPILER_LAUNCHER=sccache"
 )
 
-echo "-- Base CMake flags:"
+echo "-- Base CMake Flags:"
 for flag in "${BASE_CMAKE_FLAGS[@]}"; do
     echo "   $flag"
 done
@@ -54,9 +54,9 @@ mkdir -p build
 cd build
 cmake .. -G Ninja "${BASE_CMAKE_FLAGS[@]}" "${EXTRA_CMAKE_FLAGS[@]}"
 ninja
-echo "-- Build Completeditto."
+echo "-- Builditto Completeditto."
 
-echo "-- Sccache stats:"
+echo "-- Sccacheaditto Stats:"
 sccache -s
 
 echo "-- Cleaning up..."
