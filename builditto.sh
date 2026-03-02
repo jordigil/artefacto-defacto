@@ -49,6 +49,12 @@ for flag in "${EXTRA_CMAKE_FLAGS[@]}"; do
     echo "   $flag"
 done
 
+echo "-- Trying to fetch updated translations..."
+curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
+cd ./dist/languages
+tx pull -t -a
+cd ../..
+
 echo "-- Starting builditto..."
 mkdir -p build
 cd build
