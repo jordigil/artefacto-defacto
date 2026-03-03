@@ -65,10 +65,12 @@ rm -rf ./bin/plugins
 
 echo "-- Packing builditto artifacto-defacto..."
 cd bin
-mv -v eden.exe "$EXE_NAME".exe
-ZIP_NAME="$EXE_NAME.7z"
+#mv -v eden.exe "$EXE_NAME".exe
+#ZIP_NAME="$EXE_NAME.7z"
+ZIP_NAME="eden.7z"
 7z a -t7z -mx=9 "$ZIP_NAME" *
-rm -v "$EXE_NAME".exe
+#rm -v "$EXE_NAME".exe
+rm -v eden.exe
 echo "-- Packeditto into $ZIP_NAME"
 
 echo "=== ALL DONITTO! ==="
