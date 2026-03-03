@@ -22,16 +22,16 @@ echo "Finished downloading $ExeFile"
 
 $Arguments = "--root `"$VULKAN_SDK`" --accept-licenses --default-answer --confirm-command install"
 
-echo "Installing Vulkanitto SDK $VulkanSDKVer"
+echo "Installing Vulkaneaditto SDK $VulkanSDKVer"
 $InstallProcess = Start-Process -FilePath $Destination -NoNewWindow -PassThru -Wait -ArgumentList $Arguments
 $ExitCode = $InstallProcess.ExitCode
 
 if ($ExitCode -ne 0) {
-    echo "Error installing Vulkanitto SDK $VulkanSDKVer (Error: $ExitCode)"
+    echo "Error installing Vulkaneaditto SDK $VulkanSDKVer (Error: $ExitCode)"
     Exit $ExitCode
 }
 
-echo "Finished installing Vulkanitto SDK $VulkanSDKVer"
+echo "Finished installing Vulkaneaditto SDK $VulkanSDKVer"
 
 if ("$env:GITHUB_ACTIONS" -eq "true") {
     echo "VULKAN_SDK=$VULKAN_SDK" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
