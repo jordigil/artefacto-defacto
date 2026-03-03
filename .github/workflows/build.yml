@@ -45,10 +45,10 @@ jobs:
         with:
           arch: ${{ matrix.arch }}
 
-      - name: Vulkaneadito
+      - name: Vulkaneaditto
         shell: powershell
         run: |
-          ./vulkaneadito.ps1
+          ./vulkaneaditto.ps1
 
       - name: Sccacheaditto
         uses: Eden-CI/sccache-action@v0.0.2
