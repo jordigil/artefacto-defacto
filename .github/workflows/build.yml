@@ -13,7 +13,7 @@ on:
     inputs:
       job_to_run:
         type: choice
-        description: 'Chuse windows'
+        description: 'Gotta catch em all!'
         options: [windows]
         default: 'windows'
 
@@ -45,10 +45,10 @@ jobs:
         with:
           arch: ${{ matrix.arch }}
 
-      - name: Vulkanitto
+      - name: Vulkaneadito
         shell: powershell
         run: |
-          ./vulkanitto.ps1
+          ./vulkaneadito.ps1
 
       - name: Sccacheaditto
         uses: Eden-CI/sccache-action@v0.0.2
