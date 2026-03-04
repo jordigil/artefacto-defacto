@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-echo "-- Building..."
+echo "-- Builditto..."
 
 cd ./eden
 COUNT="$(git rev-list --count HEAD)"
@@ -54,23 +54,21 @@ mkdir -p build
 cd build
 cmake .. -G Ninja "${BASE_CMAKE_FLAGS[@]}" "${EXTRA_CMAKE_FLAGS[@]}"
 ninja
-echo "-- Builditto Completeditto."
+echo "-- Builditto Completeaditto."
 
 echo "-- Sccacheaditto Stats:"
 sccache -s
 
-echo "-- Cleaning up..."
+echo "-- Cleanditto upditto..."
 find bin -type f -name "*.pdb" -exec rm -fv {} +
 rm -rf ./bin/plugins
 
-echo "-- Packing builditto artifacto-defacto..."
+echo "-- Packing builditto in the artifacto-defacto..."
 cd bin
-#mv -v eden.exe "$EXE_NAME".exe
-#ZIP_NAME="$EXE_NAME.7z"
-ZIP_NAME="eden.7z"
+mv -v eden.exe "$EXE_NAME".exe
+ZIP_NAME="$EXE_NAME.7z"
 7z a -t7z -mx=9 "$ZIP_NAME" *
-#rm -v "$EXE_NAME".exe
-rm -v eden.exe
-echo "-- Packeditto into $ZIP_NAME"
+rm -v "$EXE_NAME".exe
+echo "-- Packeteditto into $ZIP_NAME"
 
 echo "=== ALL DONITTO! ==="
