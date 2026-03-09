@@ -13,7 +13,7 @@ echo "   Architecture: ${ARCH}"
 echo "   Count: ${COUNT}"
 echo "   Name: ${EXE_NAME}"
 
-echo "-- Applying updater patchditto..."
+echo "-- Applying updater patcheaditto..."
 patch -p1 < ../patches/update.patch
 
 echo "   Donditto."
@@ -59,7 +59,7 @@ echo "-- Builditto Completeaditto."
 echo "-- Sccacheaditto Stats:"
 sccache -s
 
-echo "-- Cleanditto upditto..."
+echo "-- Cleanditto up..."
 find bin -type f -name "*.pdb" -exec rm -fv {} +
 rm -rf ./bin/plugins
 
