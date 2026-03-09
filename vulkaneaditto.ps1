@@ -3,7 +3,7 @@ $ErrorActionPreference = "Stop"
 try {
     net session 1>$null 2>$null
 } catch {
-    Write-Host "This script must be run with administrator privileges!"
+    Write-Host "This script must be run with administrator privileges! :("
     Exit 1
 }
 
@@ -15,7 +15,7 @@ $ExeFile = "vulkansdk-windows-$VulkanSDKArch-$VulkanSDKVer.exe"
 $Uri = "https://sdk.lunarg.com/sdk/download/$VulkanSDKVer/$VulkanSDKOs/$ExeFile"
 $Destination = "./$ExeFile"
 
-echo "Downloading Vulkanitto SDK $VulkanSDKVer from $Uri"
+echo "Downloading Vulkaneaditto SDK $VulkanSDKVer from $Uri"
 $WebClient = New-Object System.Net.WebClient
 $WebClient.DownloadFile($Uri, $Destination)
 echo "Finished downloading $ExeFile"
