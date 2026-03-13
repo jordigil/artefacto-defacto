@@ -13,8 +13,8 @@ echo "   Architecture: ${ARCH}"
 echo "   Count: ${COUNT}"
 echo "   Name: ${EXE_NAME}"
 
-echo "-- Applying updater patcheaditto..."
-patch -p1 < ../patches/update.patch
+echo "-- Applying verision patcheaditto..."
+patch -p1 < ../patcheaditto.patch
 
 echo "   Donditto."
 
