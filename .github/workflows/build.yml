@@ -67,7 +67,7 @@ jobs:
           ./builditto.sh
 
       - name: Uploaditto
-        uses: actions/upload-artifact@v7.0.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: artefacto-defacto
           path: eden/build/bin/
