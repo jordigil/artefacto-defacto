@@ -1,5 +1,5 @@
 name: Build
-run-name: ${{ github.event.inputs.job_to_run && format('Build {0}', github.event.inputs.job_to_run) || github.event.pull_request.title }}
+run-name: ${{ github.event.inputs.job_to_run && format('Build {0}', github.event.inputs.job_to_run) }}
 
 concurrency:
   group: build-eden-${{ github.ref }}-${{ github.event.inputs.job_to_run || github.event_name }}
@@ -13,7 +13,7 @@ on:
     inputs:
       job_to_run:
         type: choice
-        description: 'windows'
+        description: 'windows?'
         options: [windows]
         default: 'windows'
 
@@ -31,7 +31,7 @@ jobs:
              runs-on: windows-latest
     defaults:
       run:
-        shell: ${{ matrix.toolchain == 'MSYS2' && 'msys2 {0}' || 'bash {0}' }}
+        shell: ${{ 'bash {0}' }}
     env:
       TOOLCHAIN: ${{ matrix.toolchain }}
       ARCH: ${{ matrix.arch }}
