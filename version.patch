@@ -1,5 +1,5 @@
 diff --git a/CMakeModules/GenerateSCMRev.cmake b/CMakeModules/GenerateSCMRev.cmake
-index 5b0adad8dd..9410ff893a 100644
+index 2b028b4846..4b8ce91624 100644
 --- a/CMakeModules/GenerateSCMRev.cmake
 +++ b/CMakeModules/GenerateSCMRev.cmake
 @@ -8,19 +8,37 @@
@@ -7,7 +7,7 @@ index 5b0adad8dd..9410ff893a 100644
  
  function(get_timestamp _var)
 -    string(TIMESTAMP timestamp UTC)
-+    string(TIMESTAMP timestamp "%Y-%m-%d" UTC)
++	string(TIMESTAMP timestamp "%Y-%m-%d" UTC)
      set(${_var} "${timestamp}" PARENT_SCOPE)
  endfunction()
  
