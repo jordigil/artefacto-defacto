@@ -41,7 +41,7 @@ jobs:
       - uses: actions/checkout@v6.0.2
 
       - name: MSVC
-        uses: ilammy/msvc-dev-cmd@v1.13.0
+        uses: Eden-CI/msvc-dev-cmd@master
         with:
           arch: ${{ matrix.arch }}
 
